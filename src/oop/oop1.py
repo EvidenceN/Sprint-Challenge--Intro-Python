@@ -7,6 +7,45 @@
 #   |       |
 #   v       v
 # [Car]  [Motorcycle]
+
+# base class = Vehicle. 
+# flightvehicle is sub class of vehicle, and starship, flight vehicle are subclasses of flight vehicle. 
+# ground vehicle inherits from vehicle. car and motorcycle inherits from ground vehicle
+
+class Vehicle:
+    def __init__(self):
+        pass
+
+class GroundVehicle(Vehicle):
+    def __init__(self):
+        super().__init__()
+        pass
+
+class Car(GroundVehicle):
+    def __init__(self):
+        super().__init__()
+        pass
+
+class Motorcycle(GroundVehicle):
+    def __init__(self):
+        super().__init__()
+        pass   
+
+class FlightVehicle(Vehicle):
+    def __init__(self):
+        super().__init__()
+        pass
+
+class Starship(FlightVehicle):
+    def __init__(self):
+        super().__init__()
+        pass
+
+class Airplane(FlightVehicle):
+    def __init__(self):
+        super().__init__()
+        pass
+
 #
 # Each class can simply "pass" for its body. The exercise is about setting up
 # the hierarchy.
