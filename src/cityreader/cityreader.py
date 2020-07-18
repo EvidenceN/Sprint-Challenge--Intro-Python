@@ -1,6 +1,11 @@
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
+class City:
+      def __init__(self, name, lat, lon):
+            self.name = name 
+            self.lat = lat
+            self.lon = lon
 
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
@@ -14,21 +19,63 @@
 #
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
-cities = []
 
-def cityreader(cities=[]):
-  # TODO Implement the functionality to read from the 'cities.csv' file
+# TODO Implement the functionality to read from the 'cities.csv' file
   # Ensure that the lat and lon valuse are all floats
   # For each city record, create a new City instance and add it to the 
   # `cities` list
+
+import csv
+
+works_cities = []
+
+def works_but_test_fail(works_cities=[]):
+
+      all_cities = []
+
+      with open('cities.csv') as city_list:
+        city = csv.reader(city_list, delimiter=",")
+        city.__next__()
+        for row in city:
+              all_cities.append(row)
+
+      for i in all_cities:
+            name = i[0]
+            lat = i[3]
+            lon = i[4]
+            city_class = City(name, lat, lon)
+            final_list = [city_class.name, city_class.lat, city_class.lon]
+            works_cities.append(final_list)
+
+      return works_cities
+
+works_but_test_fail(works_cities)
+
+cities = []
+
+def cityreader(cities=[]):
     
-    return cities
+      all_cities = []
+
+      with open('cities.csv') as city_list:
+        city = csv.reader(city_list, delimiter=",")
+        city.__next__()
+        for row in city:
+              all_cities.append(row)
+
+      for i in all_cities:
+            name = i[0]
+            lat = i[3]
+            lon = i[4]
+            city_class = City(name, lat, lon)
+            cities.append(city_class)
+      return cities
 
 cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(c)
+    print(c.name, c.lat, c.lon)
 
 # STRETCH GOAL!
 #
